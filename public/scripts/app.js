@@ -69,9 +69,37 @@ var Student = function (_Person) {
   return Student;
 }(Person);
 
-var me = new Student("Siim Saar", 29, "Arvuti teadus");
+var Traveler = function (_Person2) {
+  _inherits(Traveler, _Person2);
 
-console.log(me.getDescription());
+  function Traveler(name, age, homeLocation) {
+    _classCallCheck(this, Traveler);
 
-var other = new Student();
-console.log(other.getDescription());
+    var _this2 = _possibleConstructorReturn(this, (Traveler.__proto__ || Object.getPrototypeOf(Traveler)).call(this, name, age));
+
+    _this2.homeLocation = homeLocation;
+    return _this2;
+  }
+
+  _createClass(Traveler, [{
+    key: "getGreeting",
+    value: function getGreeting() {
+      var greeting = _get(Traveler.prototype.__proto__ || Object.getPrototypeOf(Traveler.prototype), "getGreeting", this).call(this);
+
+      if (this.homeLocation) {
+        greeting += " On p\xE4rit " + this.homeLocation;
+      }
+
+      return greeting;
+    }
+  }]);
+
+  return Traveler;
+}(Person);
+
+var me = new Traveler("Siim Saar", 29, "Imavere");
+
+console.log(me.getGreeting());
+
+var other = new Traveler();
+console.log(other.getGreeting());

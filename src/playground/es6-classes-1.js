@@ -30,9 +30,25 @@ class Student extends Person {
   }
 }
 
-const me = new Student("Siim Saar", 29, "Arvuti teadus");
+class Traveler extends Person {
+  constructor(name, age, homeLocation) {
+    super(name, age);
+    this.homeLocation = homeLocation;
+  }
+  getGreeting() {
+    let greeting = super.getGreeting();
 
-console.log(me.getDescription());
+    if (this.homeLocation) {
+      greeting += ` On pärit ${this.homeLocation}`;
+    }
 
-const other = new Student();
-console.log(other.getDescription());
+    return greeting;
+  }
+}
+
+const me = new Traveler("Siim Saar", 29, "Imavere");
+
+console.log(me.getGreeting());
+
+const other = new Traveler();
+console.log(other.getGreeting());
